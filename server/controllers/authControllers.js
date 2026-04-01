@@ -28,7 +28,11 @@ const registerUser = async (req, res) => {
 
         res.status(201).json({
             message: "User registered successfully",
-            user: userData,
+            user: {
+                _id: userData._id,
+                name: userData.name,
+                email: userData.email
+            },
             token: generateToken(userData._id)
         });
     } catch (error) {
@@ -45,7 +49,11 @@ const loginUser = async (req, res) => {
         if (user && (await bcrypt.compare(password, user.password))) {
             res.json({
                 message: "Login successful",
-                user,
+                user: {
+                    _id: user._id,
+                    name: user.name,
+                    email: user.email
+                },
                 token: generateToken(user._id)
             });
         } else {

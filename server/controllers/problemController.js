@@ -4,7 +4,7 @@ const Problem = require("../models/Problem");
 const addProblem = async (req, res) => {
     try {
         const problem = await Problem.create({
-            userId: req.user,
+            userId: req.user._id,
             ...req.body
         });
 
@@ -17,7 +17,7 @@ const addProblem = async (req, res) => {
 
 const getProblems = async (req, res) => {
     try {
-        const problems = await Problem.find({ userId: req.user });
+        const problems = await Problem.find({ userId: req.user._id });
 
         res.json(problems);
 
@@ -28,7 +28,18 @@ const getProblems = async (req, res) => {
 
 const deleteProblem = async (req, res) => {
     try {
-        await Problem.findByIdAndDelete(req.params.id);
+        const problem = await Problem.findById(req.params.id);
+
+        if (!problem) {
+            return res.status(404).json({ message: "Problem not found" });
+        }
+
+        // Make sure the logged in user matches the problem user
+        if (problem.userId.toString() !== req.user._id.toString()) {
+            return res.status(401).json({ message: "User not authorized to delete this problem" });
+        }
+
+        await problem.deleteOne();
 
         res.json({ message: "Problem deleted" });
 
@@ -37,4 +48,30 @@ const deleteProblem = async (req, res) => {
     }
 };
 
-module.exports = { addProblem, getProblems, deleteProblem };
+const updateProblem = async (req, res) => {
+    try {
+        const problem = await Problem.findById(req.params.id);
+
+        if (!problem) {
+            return res.status(404).json({ message: "Problem not found" });
+        }
+
+        // Make sure the logged in user matches the problem user
+        if (problem.userId.toString() !== req.user._id.toString()) {
+            return res.status(401).json({ message: "User not authorized to update this problem" });
+        }
+
+        const updatedProblem = await Problem.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+
+        res.json(updatedProblem);
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+module.exports = { addProblem, getProblems, deleteProblem, updateProblem };
