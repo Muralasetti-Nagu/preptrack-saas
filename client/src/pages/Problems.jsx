@@ -31,12 +31,12 @@ export const Problems = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this problem?")) return;
     try {
       await fetchAPI(`/problems/${id}`, { method: "DELETE" });
       setProblems(problems.filter((p) => p._id !== id));
     } catch (err) {
-      alert("Failed to delete problem");
+      console.error("Delete Error:", err);
+      alert(`API Error: ${err.message}`);
     }
   };
 
@@ -108,7 +108,7 @@ export const Problems = () => {
                         </td>
                         <td className="p-4 align-middle hidden lg:table-cell">{problem.topic}</td>
                         <td className="p-4 align-middle text-right flex justify-end">
-                          <Button variant="ghost" size="icon" onClick={() => handleDelete(problem._id)}>
+                          <Button type="button" variant="ghost" size="icon" onClick={() => handleDelete(problem._id)}>
                             <Trash2 className="h-4 w-4 text-hard" />
                           </Button>
                         </td>
