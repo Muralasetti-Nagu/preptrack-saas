@@ -7,19 +7,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0f1115",
-        surface: "#1a1d24",
-        border: "#2b303b",
-        primary: "#3b82f6", // blue-500
-        primaryHover: "#2563eb", // blue-600
-        textMain: "#f8fafc", // slate-50
-        textDim: "#94a3b8", // slate-400
-        easy: "#22c55e", // green-500
-        medium: "#eab308", // yellow-500
-        hard: "#ef4444", // red-500
+        background: "#f6f9fc", // Stripe's signature subtle slate background
+        surface: "#ffffff", // Pure white for floating cards
+        border: "#e2e8f0", // Very soft gray boundaries
+        primary: "#635BFF", // Stripe bold Indigo
+        primaryHover: "#4f46e5", // Slightly deeper indigo
+        textMain: "#0f172a", // Very dark slate for headers
+        textDim: "#475569", // Medium slate for secondary text
+        easy: "#10b981", // Vibrant, clean green
+        medium: "#f59e0b", // Warm amber
+        hard: "#ef4444", // Bright red
+      },
+      boxShadow: {
+        'stripe': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05)',
+        'stripe-focus': '0 0 0 3px rgba(99, 91, 255, 0.25)',
       },
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
+        inter: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
       }
     },
   },

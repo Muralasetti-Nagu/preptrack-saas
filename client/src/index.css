@@ -5,22 +5,29 @@
 @layer base {
   body {
     @apply bg-background text-textMain font-inter antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer components {
-  /* Minimal scrollbar */
+  /* Ultra-minimal, smooth scrollbars */
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-border rounded-full;
+    @apply bg-slate-300 rounded-full;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-textDim;
+    @apply bg-slate-400;
+  }
+
+  /* Smooth transition utilities for all interactable elements */
+  .trans-all {
+    @apply transition-all duration-200 ease-in-out;
   }
 }
