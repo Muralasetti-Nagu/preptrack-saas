@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, ListTodo, PlusCircle, LogOut } from "lucide-react";
+import { LayoutDashboard, ListTodo, PlusCircle, LogOut, BarChart2 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { cn } from "../../lib/utils";
 
@@ -11,6 +11,7 @@ export const Sidebar = () => {
     { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
     { label: "Problems", href: "/problems", icon: ListTodo },
     { label: "Add Problem", href: "/add-problem", icon: PlusCircle },
+    { label: "Analytics", href: "/analytics", icon: BarChart2 },
   ];
 
   return (

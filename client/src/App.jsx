@@ -5,6 +5,7 @@ import { Register } from "./pages/Register";
 import { Dashboard } from "./pages/Dashboard";
 import { Problems } from "./pages/Problems";
 import { AddProblem } from "./pages/AddProblem";
+import { Analytics } from "./pages/Analytics";
 
 // Protected Route Wrapper
 const ProtectedRoute = ({ children }) => {
@@ -47,6 +48,12 @@ function App() {
           <Route path="/add-problem" element={
             <ProtectedRoute>
               <AddProblem />
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/analytics" element={
+            <ProtectedRoute>
+              <Analytics />
             </ProtectedRoute>
           } />
           
