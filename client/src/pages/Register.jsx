@@ -94,9 +94,17 @@ export const Register = () => {
         }} />
         <div className="relative z-10 max-w-md space-y-8">
           <div>
-            <h1 className="text-4xl font-extrabold text-white tracking-tight">
-              Prep<span className="text-indigo-400">Track</span>
-            </h1>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center shadow-2xl ring-1 ring-white/20">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.4" />
+                  <path d="M9 17V7H13.5C15.433 7 17 8.567 17 10.5C17 12.433 15.433 14 13.5 14H9" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <h1 className="text-3xl font-extrabold text-white tracking-tight">
+                Prep<span className="text-indigo-400">Track</span>
+              </h1>
+            </div>
             <p className="text-slate-400 mt-4 text-lg leading-relaxed">
               Your all-in-one interview preparation tracker. Organize problems, visualize progress, and stay consistent.
             </p>

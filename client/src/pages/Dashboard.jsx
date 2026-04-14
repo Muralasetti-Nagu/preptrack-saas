@@ -241,7 +241,7 @@ export const Dashboard = () => {
         {/* ── Header ──────────────────────────────────────────────────────── */}
         <div style={{ animation: 'dashFadeUp 0.3s ease-out both' }}>
           <h2 className="text-3xl font-extrabold tracking-tight dash-gradient-text">
-            {greeting()}, {user?.name?.split(' ')[0]} 👋
+            {greeting()}, {user?.name?.split(' ')[0]}
           </h2>
           <p className="text-slate-400 mt-2 text-sm font-medium">
             Here&apos;s a quick overview of your preparation journey.
